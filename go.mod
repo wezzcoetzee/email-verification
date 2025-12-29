@@ -1,4 +1,4 @@
-module email-checker
+module email-verification
 
 go 1.22
 

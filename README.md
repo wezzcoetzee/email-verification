@@ -1,4 +1,4 @@
-# Email Checker
+# Email Verification
 
 A high-performance Go-based email verification system that validates email addresses using the [AfterShip email-verifier](https://github.com/AfterShip/email-verifier) library. Designed to handle **millions of emails** efficiently.
 
@@ -23,7 +23,7 @@ A high-performance Go-based email verification system that validates email addre
 ## Installation
 
 ```bash
-cd email-checker
+cd email-verification
 
 # Download dependencies
 make deps
@@ -39,7 +39,7 @@ cp env.example .env
 
 # 2. Add your emails to data/data.json
 
-# 3. Run the checker
+# 3. Run the verification
 make run
 
 # 4. Check data/invalid_emails.json for results
@@ -89,7 +89,7 @@ ENABLE_SMTP=true
 ### Command Line Options
 
 ```bash
-./email-checker [options]
+./email-verification [options]
 
 Options:
   -input string     Input JSON file with emails (default "data/data.json")
@@ -243,7 +243,7 @@ Create a `data/data.json` file with an array of emails:
 ## Project Structure
 
 ```
-email-checker/
+email-verification/
 ├── main.go             # Main application logic
 ├── go.mod              # Go module definition
 ├── go.sum              # Dependency checksums

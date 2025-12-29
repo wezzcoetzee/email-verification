@@ -1,7 +1,7 @@
 .PHONY: build run clean deps test help run-fast run-no-smtp run-verbose
 
 # Binary name
-BINARY=email-checker
+BINARY=email-verification
 
 # Data directory
 DATA_DIR=data
