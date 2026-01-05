@@ -38,6 +38,12 @@ Thumbs.db
 # Data directory (contains input/output files)
 /data/
 
+# Input directory
+/input/
+
+# Output directory
+/output/
+
 # Debug files
 debug
 *.log
