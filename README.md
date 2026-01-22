@@ -32,6 +32,28 @@ make deps
 go mod tidy
 ```
 
+## Testing
+
+```bash
+# Run all tests
+go test ./...
+
+# Run tests with verbose output
+go test -v ./...
+
+# Run tests for a specific package
+go test -v ./internal/verifier
+go test -v ./internal/config
+go test -v ./internal/fileio
+go test -v ./internal/api
+
+# Run tests with coverage
+go test -cover ./...
+
+# Run benchmarks
+go test -bench=. -benchmem ./...
+```
+
 ## Quick Start
 
 ### Step 1: Convert your input data
