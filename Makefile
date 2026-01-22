@@ -1,4 +1,4 @@
-.PHONY: build run clean deps test help run-fast run-no-smtp run-verbose
+.PHONY: build run clean deps test help run-fast run-no-smtp run-verbose api api-build
 
 # Binary name
 BINARY=email-checker
@@ -63,3 +63,9 @@ fmt: ## Format code
 
 vet: ## Run go vet
 	go vet ./...
+
+api: deps ## Run API server
+	go run ./cmd/api
+
+api-build: deps ## Build API server binary
+	go build -ldflags="-s -w" -o email-api ./cmd/api
