@@ -1,7 +1,10 @@
 .PHONY: build run clean deps test help run-fast run-no-smtp run-verbose
 
 # Binary name
-BINARY=email-verification
+BINARY=email-checker
+
+# Source directory
+CMD_DIR=./cmd/email-checker
 
 # Data directory
 DATA_DIR=data
@@ -22,19 +25,19 @@ deps: ## Download dependencies
 	go mod tidy
 
 build: deps ## Build the binary (optimized)
-	go build -ldflags="-s -w" -o $(BINARY) main.go
+	go build -ldflags="-s -w" -o $(BINARY) $(CMD_DIR)
 
 run: deps ## Run with default settings
-	go run main.go -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -batch=$(BATCH_SIZE) -rate=$(RATE_LIMIT)
+	go run $(CMD_DIR) -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -batch=$(BATCH_SIZE) -rate=$(RATE_LIMIT)
 
 run-fast: deps ## Run with maximum speed (no rate limiting)
-	go run main.go -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=32 -batch=5000 -rate=0
+	go run $(CMD_DIR) -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=32 -batch=5000 -rate=0
 
 run-no-smtp: deps ## Run without SMTP verification (faster)
-	go run main.go -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -smtp=false
+	go run $(CMD_DIR) -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -smtp=false
 
 run-verbose: deps ## Run with verbose logging
-	go run main.go -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -verbose
+	go run $(CMD_DIR) -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS) -verbose
 
 run-build: build ## Run the compiled binary
 	./$(BINARY) -input=$(INPUT_FILE) -output=$(OUTPUT_FILE) -workers=$(WORKERS)
